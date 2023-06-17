@@ -10,8 +10,18 @@ server.use(cors);
 //
 
 // Routes
-server.get("/", () => {
+server.get("/", (req, res) => {
   console.log("main page");
+  res.end();
+});
+//
+
+// Web Socket
+server.ws("/", (ws, req) => {
+  ws.on("message", (msg) => {
+    console.log(msg);
+  });
+  console.log("socket on?");
 });
 //
 
